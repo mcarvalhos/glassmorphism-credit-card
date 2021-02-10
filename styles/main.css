@@ -1,0 +1,136 @@
+:root {
+  --white: #fff;
+  --gray: #999;
+  --purple: #442c61;
+  --yellow: #f79e1b;
+  --red: #eb001b;
+  --light-blue: #0061ff;
+  --dark-blue: #08189e;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  font-family: "Poppins", sans-serif;
+}
+
+.flex {
+  display: flex;
+}
+.absolute {
+  position: absolute;
+}
+
+.credit-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: var(--purple);
+}
+
+.credit-card::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 400px;
+  background: url("../assets/payment.svg") -170px -50px / cover no-repeat;
+  transform: scaleX(-1);
+}
+
+.card {
+  position: relative;
+  width: 500px;
+  height: 300px;
+  transform-style: preserve-3d;
+  perspective: 500px;
+}
+
+.card .face {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgb(255 255 255 / 20%);
+  border-radius: 10px;
+  background: linear-gradient(
+    135deg,
+    rgb(255 255 255 / 10%) 0%,
+    transparent 100%
+  );
+  backdrop-filter: blur(10px);
+  box-shadow: 2px 2px 0px 0px rgb(255 255 255 / 20%);
+  transform-style: preserve-3d;
+  transition: 0.75s ease-in-out;
+  backface-visibility: hidden;
+  transform: rotateY(0);
+}
+
+#chip {
+  width: 60px;
+  height: 60px;
+  top: 100px;
+  left: 50px;
+}
+
+#signal {
+  width: 25px;
+  height: 25px;
+  top: 115px;
+  left: 115px;
+  transform: rotate(90deg);
+}
+
+#logo {
+  width: 85px;
+  height: 85px;
+  bottom: 30px;
+  left: 40px;
+}
+
+#owner {
+  botton: 55px;
+  left: 140px;
+  font: size 1.35rem;
+  letter-spacing: 1px;
+  color: var(--white);
+}
+
+.card .face.front::before,
+.card .face.front::after {
+  content: "";
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  opacity: 0.75;
+}
+
+.card .face.front::before,
+.card .face.front::after {
+  top: 10px;
+  mix-blend-mode: overlay;
+}
+
+.card .face.front::before {
+  right: 20px;
+}
+
+.card .face.front::after {
+  right: 45px;
+}
+.card .face.front::before {
+  background: var(--yellow);
+}
+
+.card .face.front::after {
+  background: var(--red);
+}
+
+.card:hover .face.front {
+  transform: rotateY(180deg);
+}
